@@ -1,0 +1,15 @@
+.timer{
+    margin: 0 5px;
+    font-size: 2em;
+}
+
+.timer-wrapper{
+    display: flex;
+    background-color: aqua;
+    align-items: center;
+    justify-content: center;  
+}
+
+.timer-wrapper > button {
+    margin: 2px 2.5px;
+}
