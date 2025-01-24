@@ -1,4 +1,4 @@
-const tasks = [
+let tasks = [
     {
         id: 1, 
         name: "Wash monkey",

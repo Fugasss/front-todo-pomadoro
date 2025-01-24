@@ -16,12 +16,15 @@ export default function App() {
   
   return (
     <>
-      <Header completeHandler = 
+      <Header timerCompleteHandler = 
       {
         ()=>{
           tasks[id].isCompleted = true;
           setTasks(tasks);
-          setId(id + 1);
+
+          if(id + 1 < tasks.length){
+            setId(id + 1);
+          }
         }
         
       }/>

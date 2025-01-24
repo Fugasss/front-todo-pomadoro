@@ -1,12 +1,17 @@
-import Timer from './timer/Timer';
+import TimerWrapper from './timer/TimerWrapper';
 
-export default function Header({completeHandler}){
-
+export default function Header({timerCompleteHandler}){
 
     return (
         <>
             <h1>ToDo</h1>
-            <Timer completeHandler={completeHandler}/>
+            <TimerWrapper 
+                initialTime={5}
+                onStop={()=>{console.log("STOP")}} 
+                onPause={()=>{console.log("PAUSE")}} 
+                onReset={()=>{console.log("RESET")}} 
+                onComplete={timerCompleteHandler}
+            />
             
         </>
     );
