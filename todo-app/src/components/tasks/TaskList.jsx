@@ -6,7 +6,7 @@ export default function TaskList({tasks}) {
     return (
         <>
             {tasks.map((val, i)=>{
-                return <Task key={i} name={val.name} completed={val.isCompleted}/>
+                return <Task key={i} {...val}/>
             })}
         </>
     );

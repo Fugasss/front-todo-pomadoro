@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 
 export default function Timer({time, setTime, state, setState, onComplete = null, onPause = null, onStop = null}) {
 
-
     useEffect(() => {
         let timer;
         if (state==="RUNNING" && time > 0) {
@@ -18,7 +17,7 @@ export default function Timer({time, setTime, state, setState, onComplete = null
             onPause && onPause();
         }
 
-        if (state==="RUNNING" && time <= 0) {
+        if (state==="RUNNING" && time <= 0 || state==="SKIPPED") {
             setState("STOPPED");
             onComplete && onComplete();
         }
@@ -26,6 +25,8 @@ export default function Timer({time, setTime, state, setState, onComplete = null
         return () => clearInterval(timer);
     }, [state, time]);
 
+    // console.log(`Timer: ${time} | State: ${state}`);
+    
 
     return (
         <div style={{ textAlign: 'center', marginTop: '50px' }}>

@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Timer from "./Timer";
 
-export default function TimerWrapper({initialTime ,onComplete = null, onPause = null, onStop = null}) {
+export default function TimerWrapper({initialTime, onComplete = null, onPause = null, onStop = null}) {
     const [time, setTime] = useState(initialTime);
     const [state, setState] = useState("STOPPED");
     
@@ -15,6 +15,14 @@ export default function TimerWrapper({initialTime ,onComplete = null, onPause = 
         setTime(initialTime);
         setState("STOPPED");
     };
+    const skipTimer = () => {
+        setTime(initialTime);
+        setState("SKIPPED");
+    };
+
+    useEffect(() => {
+        setTime(initialTime);
+    }, [initialTime]);
 
     const isRunning = state === "RUNNING";
 
@@ -33,6 +41,7 @@ export default function TimerWrapper({initialTime ,onComplete = null, onPause = 
                 <button onClick={startTimer} disabled={isRunning}>Start</button>
                 <button onClick={pauseTimer} disabled={!isRunning}>Pause</button>
                 <button onClick={stopTimer}>Reset</button>
+                <button onClick={skipTimer}>Skip</button>
             </div>
         </>
     );

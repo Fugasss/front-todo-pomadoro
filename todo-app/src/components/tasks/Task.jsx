@@ -1,6 +1,8 @@
 import './Task.css';
 
-export default function Task({name, completed}) {
+export default function Task({name, pomodorosCount, pomodorosCompletedCount}) {
+
+    const completed = (pomodorosCount === pomodorosCompletedCount);
 
     return (
         <div className="task">
