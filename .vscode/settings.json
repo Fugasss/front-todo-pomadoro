@@ -1,4 +1,0 @@
-{
-    "python.analysis.inlayHints.functionReturnTypes": true,
-    "python.terminal.activateEnvInCurrentTerminal": true
-}

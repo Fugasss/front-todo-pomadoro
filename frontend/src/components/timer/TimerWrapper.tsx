@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react';
 import Timer from "./Timer";
 
-export default function TimerWrapper({initialTime, onComplete = null, onPause = null, onStop = null}) {
+
+type TimerWrapperProps = {
+    initialTime: number,
+    onComplete?: Function,
+    onPause?: Function,
+    onStop?: Function,
+};
+
+export default function TimerWrapper({initialTime, onComplete, onPause, onStop}: TimerWrapperProps) {
     const [time, setTime] = useState(initialTime);
     const [state, setState] = useState("STOPPED");
     
