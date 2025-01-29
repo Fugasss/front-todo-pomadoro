@@ -12,7 +12,8 @@ export type TaskAction = {
     id?: number,
     title?: string,
     description?: string,
-    completed?: boolean,
+    pomodorosCount?: number,
+    pomodorosCompleted?: number
 };
   
   
@@ -25,7 +26,8 @@ export function tasksReducer(tasks: TaskProps[], action: TaskAction) {
             id: action.id || tasks.length + 1,
             title: action.title || 'NO TITLE WERE PROVIDED',
             description: action.description || 'NO DESCRIPTION WERE PROVIDED',
-            completed: false
+            pomodorosCompleted: 0,
+            pomodorosCount: action.pomodorosCount
         }];
       }
       case TaskActionType.CHANGED: {
@@ -37,7 +39,8 @@ export function tasksReducer(tasks: TaskProps[], action: TaskAction) {
               ...t,
               title: action.title || t.title,
               description: action.description || t.description,
-              completed: action.completed || t.completed
+              pomodorosCount: action.pomodorosCount || t.pomodorosCount,
+              pomodorosCompleted: action.pomodorosCompleted || t.pomodorosCompleted
             };
           }
         });

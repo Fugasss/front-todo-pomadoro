@@ -1,0 +1,13 @@
+@use '../public/stylesheets/base';
+
+html, body{
+  background-color: base.$background-primary;
+  box-sizing: border-box;
+}
+
+#root {
+  max-width: 90vw;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}

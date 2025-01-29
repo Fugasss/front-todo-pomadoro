@@ -1,0 +1,12 @@
+
+$background-primary: #fff;
+$background-secondary: #f4f4f4;
+$text-primary: #222;
+$text-secondary: #333;
+
+[data-theme='dark']{
+    $background-primary: #222;
+    $background-secondary: #333;
+    $text-primary: #fff;
+    $text-secondary: #f4f4f4;
+}

@@ -1,19 +1,23 @@
 import { useContext, useState } from 'react';
-import './Task.css';
 import { TaskActionType } from './TasksReducer';
 import { TasksDispatchContext } from './TasksContext';
+import './Task.scss';
+
 
 export type TaskProps = {
     id: number,
     title: string,
     description: string,
-    completed: boolean,
+    pomodorosCount: number,
+    pomodorosCompleted: number, 
 };
 
 
-export function Task({id, title, description, completed}: TaskProps) {
+export function Task({id, title, description, pomodorosCount, pomodorosCompleted}: TaskProps) {
     const [update, setUpdate] = useState(false);
     const dispatch = useContext(TasksDispatchContext);
+
+    const completed = pomodorosCompleted === pomodorosCount - 1;
 
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         dispatch({type: TaskActionType.CHANGED, task: {id, title, description, completed}, title: e.target.value});
@@ -35,11 +39,10 @@ export function Task({id, title, description, completed}: TaskProps) {
 
     return (
         <div className="task">
-            <h3>{title}</h3>
+            <h3>{title}{completed ? '😀': '🤔'}</h3>
             <p>{description}</p>
             <button onClick={()=> setUpdate(true)}>Edit</button>
             <button onClick={()=> dispatch({type: TaskActionType.DELETED, id: id})}>Delete</button>
-
         </div>
     );
 }
