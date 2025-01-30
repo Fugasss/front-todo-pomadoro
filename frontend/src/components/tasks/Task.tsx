@@ -20,11 +20,27 @@ export function Task({id, title, description, pomodorosCount, pomodorosCompleted
     const completed = pomodorosCompleted === pomodorosCount;
 
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch({type: TaskActionType.CHANGED, task: {id, title, description, completed}, title: e.target.value});
+        dispatch({
+            type: TaskActionType.CHANGED, 
+            id: id,
+            title: e.target.value,
+        });
     };
 
     const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch({type: TaskActionType.CHANGED, task: {id, title, description, completed}, description: e.target.value});
+        dispatch({
+            type: TaskActionType.CHANGED, 
+            id: id,
+            description:  e.target.value,
+        });
+    };
+
+    const handlePomodorosCountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch({
+            type: TaskActionType.CHANGED, 
+            id: id,
+            pomodorosCount: +e.target.value,
+        });
     };
 
     if(update) {
@@ -32,6 +48,7 @@ export function Task({id, title, description, pomodorosCount, pomodorosCompleted
             <div className="task">
                 <input type="text" value={title} onChange={handleTitleChange} />
                 <input type="text" value={description} onChange={handleDescriptionChange} />
+                <input type="number" value={pomodorosCount} onChange={handlePomodorosCountChange} />
                 <button onClick={() => setUpdate(false)}>Back</button>
             </div>
         );
@@ -39,7 +56,7 @@ export function Task({id, title, description, pomodorosCount, pomodorosCompleted
 
     return (
         <div className="task">
-            <h3>{title}{completed ? '😀': '🤔'}</h3>
+            <h3>{title}{completed ? '😀': '🤔'}{pomodorosCompleted + 1}/{pomodorosCount}</h3>
             <p>{description}</p>
             <button onClick={()=> setUpdate(true)}>Edit</button>
             <button onClick={()=> dispatch({type: TaskActionType.DELETED, id: id})}>Delete</button>

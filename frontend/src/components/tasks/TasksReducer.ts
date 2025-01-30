@@ -26,8 +26,8 @@ export function tasksReducer(tasks: TaskProps[], action: TaskAction) {
           id: action.id || tasks.length + 1,
           title: action.title || 'NO TITLE WERE PROVIDED',
           description: action.description || 'NO DESCRIPTION WERE PROVIDED',
-          pomodorosCompleted: 0,
-          pomodorosCount: action.pomodorosCount || 1
+          pomodorosCount: action.pomodorosCount || 1,
+          pomodorosCompleted: 0
       }];
       
         localStorage.setItem("tasks", JSON.stringify(newTasks));
@@ -35,19 +35,31 @@ export function tasksReducer(tasks: TaskProps[], action: TaskAction) {
         return newTasks;
       }
       case TaskActionType.CHANGED: {
-        return tasks.map(t => {
+        
+        const updatedTasks = tasks.map(t => {
           if (t.id === action?.id) {
-            return t;
-          }else{
-            return {
+            
+            const updatedTask = {
               ...t,
               title: action.title || t.title,
               description: action.description || t.description,
               pomodorosCount: action.pomodorosCount || t.pomodorosCount,
               pomodorosCompleted: action.pomodorosCompleted || t.pomodorosCompleted
             };
+
+
+            return updatedTask;
+          }else{
+            return t;
           }
         });
+
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+
+      console.log(`updatedTasks ${updatedTasks}` );
+
+
+        return updatedTasks;
       }
       case TaskActionType.DELETED: {
         const newTasks = tasks.filter(t => t.id !== action.id);

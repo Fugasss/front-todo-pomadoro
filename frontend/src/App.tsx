@@ -9,21 +9,27 @@ import './App.scss'
 import { PomodoroTimer } from './components/timer/PomodoroTimer';
 
 
-  
-const initialTasks: TaskProps[] = [
+const localStorageTasks = localStorage.getItem("tasks");
+const initialTasks: TaskProps[] = (localStorageTasks && localStorageTasks.length > 0 && JSON.parse(localStorageTasks, (k: string, v: string)=>{
+    if(k === 'pomodorosCount' || k === 'pomodorosCompleted'){
+      return +v;
+    }
+    return v;
+})) || [
   { id: 1, title: 'Task 1', description: 'This is Task 1', pomodorosCount: 4, pomodorosCompleted: 0 },
   { id: 2, title: 'Task 2', description: 'This is Task 2', pomodorosCount: 4, pomodorosCompleted: 0 },
   { id: 3, title: 'Task 3', description: 'This is Task 3', pomodorosCount: 4, pomodorosCompleted: 0 },
 ];
 
 export default function App() {
+
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
   
   return (
     <>
       <TasksContext.Provider value={tasks}>
         <TasksDispatchContext.Provider value={dispatch}>
-          <h1>Tasks</h1>
+          <h1>ToDo List</h1>
           <PomodoroTimer/>
           <TaskAdd/>
           <TasksList />

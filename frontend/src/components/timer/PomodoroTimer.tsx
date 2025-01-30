@@ -12,7 +12,7 @@ export function PomodoroTimer(){
     const [taskState, setTaskState] = useState('POMODORO');
     const [time, setTime] = useState(POMODORO_DURATION);
     const tasks = useContext(TasksContext);
-    const setTask = useContext(TasksDispatchContext);
+    const dispatchTask = useContext(TasksDispatchContext);
   
     const timerCompleteHandler = ()=>{
       console.log(`Timer completed: ${tasks[id]?.pomodorosCompleted}/${ tasks[id]?.pomodorosCount}\nCurrent State: ${taskState}`);
@@ -21,10 +21,10 @@ export function PomodoroTimer(){
   
       if(taskState === "POMODORO"){
   
-        if (tasks[id].pomodorosCompleted < tasks[id].pomodorosCount){
-            setTask({
+        if (tasks[id].pomodorosCompleted + 1 < tasks[id].pomodorosCount){
+            dispatchTask({
                 type: TaskActionType.CHANGED,
-                id: id,
+                id: tasks[id].id,
                 pomodorosCompleted: tasks[id].pomodorosCompleted + 1,
             });
   

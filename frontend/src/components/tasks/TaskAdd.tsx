@@ -15,7 +15,10 @@ export function TaskAdd() {
     const dispatch = useContext(TasksDispatchContext);
 
     const addTask = () => {
-        dispatch({type: TaskActionType.ADDED, title: form.title, description: form.description, completed: false});
+        dispatch({
+            type: TaskActionType.ADDED, 
+           ...form
+        });
     };
 
     const changeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
