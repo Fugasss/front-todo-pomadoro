@@ -17,7 +17,7 @@ export function Task({id, title, description, pomodorosCount, pomodorosCompleted
     const [update, setUpdate] = useState(false);
     const dispatch = useContext(TasksDispatchContext);
 
-    const completed = pomodorosCompleted === pomodorosCount - 1;
+    const completed = pomodorosCompleted === pomodorosCount;
 
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         dispatch({type: TaskActionType.CHANGED, task: {id, title, description, completed}, title: e.target.value});

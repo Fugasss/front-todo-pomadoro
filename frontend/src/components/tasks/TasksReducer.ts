@@ -22,13 +22,17 @@ export function tasksReducer(tasks: TaskProps[], action: TaskAction) {
     
     switch (action.type) {
       case TaskActionType.ADDED: {
-        return [...tasks, {
-            id: action.id || tasks.length + 1,
-            title: action.title || 'NO TITLE WERE PROVIDED',
-            description: action.description || 'NO DESCRIPTION WERE PROVIDED',
-            pomodorosCompleted: 0,
-            pomodorosCount: action.pomodorosCount
-        }];
+        const newTasks = [...tasks, {
+          id: action.id || tasks.length + 1,
+          title: action.title || 'NO TITLE WERE PROVIDED',
+          description: action.description || 'NO DESCRIPTION WERE PROVIDED',
+          pomodorosCompleted: 0,
+          pomodorosCount: action.pomodorosCount || 1
+      }];
+      
+        localStorage.setItem("tasks", JSON.stringify(newTasks));
+
+        return newTasks;
       }
       case TaskActionType.CHANGED: {
         return tasks.map(t => {
@@ -46,7 +50,11 @@ export function tasksReducer(tasks: TaskProps[], action: TaskAction) {
         });
       }
       case TaskActionType.DELETED: {
-        return tasks.filter(t => t.id !== action.id);
+        const newTasks = tasks.filter(t => t.id !== action.id);
+
+        localStorage.setItem("tasks", JSON.stringify(newTasks));
+
+        return newTasks;
       }
       default: {
         throw Error('Unknown action: ' + action.type);

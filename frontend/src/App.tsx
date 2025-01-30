@@ -1,4 +1,4 @@
-import {  useContext, useReducer, useState } from 'react'
+import {  useContext, useEffect, useReducer, useState } from 'react'
 import { tasksReducer} from './components/tasks/TasksReducer';
 import { TaskProps } from './components/tasks/Task';
 import { TasksDispatchContext, TasksContext } from './components/tasks/TasksContext';
@@ -18,7 +18,7 @@ const initialTasks: TaskProps[] = [
 
 export default function App() {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
- 
+  
   return (
     <>
       <TasksContext.Provider value={tasks}>
@@ -26,7 +26,7 @@ export default function App() {
           <h1>Tasks</h1>
           <PomodoroTimer/>
           <TaskAdd/>
-          <TasksList/>
+          <TasksList />
         </TasksDispatchContext.Provider>
       </TasksContext.Provider>
     </>

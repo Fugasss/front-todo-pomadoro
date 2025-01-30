@@ -27,7 +27,7 @@ export function TaskAdd() {
     };
 
     const changeCount = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setForm({...form, pomodorosCount: e.target.value});
+        setForm({...form, pomodorosCount: +e.target.value});
     };
 
     return (
@@ -35,7 +35,7 @@ export function TaskAdd() {
             <p>Add Task</p>
             <input type="text" placeholder="Title" onChange={changeTitle}/>
             <input type="text" placeholder="Description" onChange={changeDescription}/>
-            <input type="number" placeholder="Pomodoros Count" onChange={changeCount}/>
+            <input type="number" min={1} placeholder="Pomodoros Count" onChange={changeCount}/>
 
             <button onClick={addTask}>Add</button>
         </div>
