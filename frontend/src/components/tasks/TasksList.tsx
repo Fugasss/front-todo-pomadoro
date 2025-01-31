@@ -1,7 +1,9 @@
 import { useContext, useState } from "react";
-import { TasksContext } from "./TasksContext";
+import { TasksContext, TasksDispatchContext } from "./TasksContext";
 import { Task } from "./Task";
-import './TasksList.scss';
+import styles from './TasksList.module.scss';
+import { TaskAdd } from "./TaskAdd";
+import { TaskActionType } from "./TasksReducer";
 
 enum TasksFilter {
     ALL = 'ALL',
@@ -11,6 +13,7 @@ enum TasksFilter {
 
 export function TasksList() {
     const tasks = useContext(TasksContext);
+    const dispatch = useContext(TasksDispatchContext);
 
     const [filter, setFilter] = useState(TasksFilter.ALL);
 
@@ -23,20 +26,28 @@ export function TasksList() {
         return true;
     });
 
+    const clearTasksList = () => {
+        dispatch({type: TaskActionType.CLEAR});
+    };
+
     return (
-        <>
-            <div className="filter">
+        <div className={styles.wrapper}>
+            <div className={styles.filters}>
                 <button disabled={filter===TasksFilter.ALL} onClick={() => setFilter(TasksFilter.ALL)}>All</button>
                 <button disabled={filter===TasksFilter.COMPLETED} onClick={() => setFilter(TasksFilter.COMPLETED)}>Completed</button>
                 <button disabled={filter===TasksFilter.INCOMPLETE} onClick={() => setFilter(TasksFilter.INCOMPLETE)}>Incomplete</button>
             </div>
-            <ul className="tasks">
+            <div className={styles.controls}>
+                <TaskAdd/>
+                <button onClick={clearTasksList}>Clear</button>
+            </div>
+            <ul className={styles.tasks}>
                 {filteredTasks.map(t => (
-                <li key={t.id}>
+                <li className={styles.task} key={t.id}>
                     <Task {...t} />
                 </li>
                 ))}
             </ul>
-        </>
+        </div>
     );
 }

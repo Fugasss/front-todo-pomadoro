@@ -1,0 +1,80 @@
+@use '../../../public/stylesheets/base';
+
+div.wrapper{
+    background-color: base.$background-tertiary;
+    padding: 7px;
+    border: base.$border;
+
+    *{
+        margin: 5px 0;
+    }
+
+    ul.tasks{
+        list-style: none;
+        padding: 0;
+        
+        li.task{
+    
+
+            padding: 15px 0;
+            background-color: base.$background-secondary;
+    
+            h3{
+                margin: 0;
+            }
+    
+            p{
+                max-width: 45ch;
+                text-wrap-style: balance;
+                text-wrap: balance;
+            }
+        }
+    }
+    
+    .controls-basic{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        margin: 5px 0;
+        padding: 5px;
+        background-color: base.$background-secondary;
+
+        button{
+            width: 28%;
+            padding: 10px 0;
+        }
+    }
+
+    .filters{
+        @extend .controls-basic;
+    }
+    
+    div.controls{
+        @extend .controls-basic;
+    }
+    
+    div.form{
+        
+        *{
+            margin: 0;
+        }
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: start;
+        align-items: center;
+        padding: 0.5rem 0;
+        background-color: base.$background-secondary;
+        
+        p{
+            font-size: 1.5rem;
+        }
+    
+        .add{
+            width: 50%;
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+        }
+    }
+}
+

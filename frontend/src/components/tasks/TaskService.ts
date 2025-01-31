@@ -5,10 +5,12 @@ export default interface TaskService {
     createTask(task: TaskProps): TaskProps;
     updateTask(task: TaskProps): TaskProps;
     deleteTask(taskId: number) : boolean;
+    clear(): void;
 };
 
 
 export class LocalTaskService implements TaskService{
+  
     getTasks(): TaskProps[] {
         const tasks = this.loadTasks();
 
@@ -57,6 +59,10 @@ export class LocalTaskService implements TaskService{
         return true;
     }
 
+    clear(): void {
+        this.saveTasks([]);
+    }
+
     loadTasks(): TaskProps[] {
         const localStorageTasks = localStorage.getItem("tasks");
         const initialTasks: TaskProps[] = (localStorageTasks && localStorageTasks.length > 0 && JSON.parse(localStorageTasks, (k: string, v: string)=>{
@@ -72,4 +78,6 @@ export class LocalTaskService implements TaskService{
     saveTasks(tasks: TaskProps[]) {
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
+
+    
 }

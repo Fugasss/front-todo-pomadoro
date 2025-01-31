@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { TasksContext, TasksDispatchContext } from "../tasks/TasksContext";
 import TimerWrapper from "./TimerWrapper";
-import { TaskAction, TaskActionType } from "../tasks/TasksReducer";
+import { TaskActionType } from "../tasks/TasksReducer";
 
 export function PomodoroTimer(){
     const POMODORO_DURATION = 25 * 60;
@@ -15,7 +15,7 @@ export function PomodoroTimer(){
     const dispatchTask = useContext(TasksDispatchContext);
   
     const timerCompleteHandler = ()=>{
-      console.log(`Timer completed: ${tasks[id]?.pomodorosCompleted}/${ tasks[id]?.pomodorosCount}\nCurrent State: ${taskState}`);
+      // console.log(`Timer completed: ${tasks[id]?.pomodorosCompleted}/${ tasks[id]?.pomodorosCount}\nCurrent State: ${taskState}`);
   
       if (id >= tasks.length) return;
   

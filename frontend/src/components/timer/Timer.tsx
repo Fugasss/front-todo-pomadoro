@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import styles from './Timer.module.scss';
+
 
 type TimerProps = {
     time: number,
@@ -42,8 +44,6 @@ export default function Timer({time, setTime, state, setState, onComplete, onPau
     const timeFormat: string =`${minutesFormat}:${secondsFormat}`;
 
     return (
-        <div style={{ textAlign: 'center', marginTop: '50px' }}>
-            <span className="timer">{timeFormat}</span>
-        </div>
+        <div className={styles.timer}>{timeFormat}</div>
     );
 }

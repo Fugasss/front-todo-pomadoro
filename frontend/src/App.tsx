@@ -2,7 +2,6 @@ import {  useContext, useReducer } from 'react'
 import { tasksReducer} from './components/tasks/TasksReducer';
 import { TasksDispatchContext, TasksContext, TaskServiceContext } from './components/tasks/TasksContext';
 import { TasksList } from './components/tasks/TasksList';
-import { TaskAdd } from './components/tasks/TaskAdd';
 
 import './App.scss'
 import { PomodoroTimer } from './components/timer/PomodoroTimer';
@@ -21,7 +20,6 @@ export default function App() {
           <TasksDispatchContext.Provider value={dispatch}>
               <h1>ToDo List</h1>
               <PomodoroTimer/>
-              <TaskAdd/>
               <TasksList />
           </TasksDispatchContext.Provider>
         </TasksContext.Provider>

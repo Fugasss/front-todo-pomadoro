@@ -1,20 +1,20 @@
 @use '../../../public/stylesheets/base';
 
 div.modal{
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(3px);
-    top:0;
+    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     
-    .modal-content{
+    .content{
         background-color: base.$background-secondary;
-        border: black 5px solid;
+        border: base.$border;
         display: flex;
         flex-flow: column nowrap;
         margin: auto;
@@ -22,7 +22,7 @@ div.modal{
         height: fit-content;
         padding: .25rem .45rem .15rem .45rem;
 
-        .modal-header{
+        .header{
             display: flex;
             flex-flow: row nowrap;
             justify-content: space-between;
@@ -36,7 +36,7 @@ div.modal{
             }
         }
     
-        .modal-body{
+        .body{
             display: flex;
             flex-flow: column nowrap;
             justify-content: center;

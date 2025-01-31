@@ -1,0 +1,30 @@
+@use '../../../public/stylesheets/base';
+
+.wrapper{
+    display: block;
+    flex-flow: column nowrap;
+    background-color: base.$background-secondary;
+    align-items: center;
+    justify-content: center;
+    border: base.$border;
+    margin-bottom: 1rem;
+
+    .timer{
+        margin: 0 5px;
+        font-size: 2em;
+        text-align: 'center';
+    }
+
+    .controls{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        button{
+            margin: 2px 2.5px;
+        }
+    }
+
+   
+}

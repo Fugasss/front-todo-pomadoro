@@ -5,6 +5,7 @@ export enum TaskActionType {
     ADDED = 'added',
     CHANGED = 'changed',
     DELETED = 'deleted',
+    CLEAR = 'clear'
 };
 
 
@@ -65,6 +66,12 @@ export function tasksReducer(tasks: TaskProps[], action: TaskAction) {
         const newTasks = tasks.filter(t => t.id !== action.id);
 
         return newTasks;
+      }
+      case TaskActionType.CLEAR: {
+        
+        taskService.clear();
+
+        return [];
       }
       default: {
         throw Error('Unknown action: ' + action.type);

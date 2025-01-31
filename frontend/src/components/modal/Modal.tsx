@@ -1,6 +1,6 @@
 import React from 'react';
 import Cross from '../Cross';
-import './Modal.scss';
+import styles from './Modal.module.scss';
 
 type ModalProps = {
     title: string,
@@ -14,14 +14,16 @@ export default class Modal extends React.Component<ModalProps> {
     }
 
     render(): React.ReactNode{
+        console.log(styles);
+        
         return (
-            <div className="modal">
-                <div className="modal-content">
-                    <div className="modal-header">
+            <div className={styles.modal}>
+                <div className={styles.content}>
+                    <div className={styles.header}>
                         <h2>{this.props.title}</h2>
                         <Cross width={36} height={36} onClick={()=>this.props.onClose()}/>
                     </div>
-                    <div className="modal-body">
+                    <div className={styles.body}>
                         {this.props.children}
                     </div>
                 </div>
