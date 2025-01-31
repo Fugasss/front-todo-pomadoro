@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { TasksDispatchContext } from "./TasksContext";
 import { TaskActionType } from "./TasksReducer";
 import './TaskAdd.scss';
-import Cross from "../Cross";
+import Modal from "../modal/Modal";
 
 type TaskAddForm = {
     title: string,
@@ -39,20 +39,15 @@ export function TaskAdd() {
         return (
             <>
             <button onClick={()=>{setShowForm(false);}}>Create</button>
-            <div className="modal">
-                <div className="task-add-form modal">
-                    <div>
-                        <p style={{display: "inline"}}>Add Task</p>
-                        <Cross width={48} height={48} onClick={()=>setShowForm(false)}/>
-                    </div>
-                    
+            <Modal title="Add Task" onClose={()=>setShowForm(false)}>
+                <div className="task-add-form">
                     <input type="text" placeholder="Title" onChange={changeTitle}/>
                     <input type="text" placeholder="Description" onChange={changeDescription}/>
                     <input type="number" min={1} placeholder="Pomodoros Count" onChange={changeCount}/>
 
-                    <button onClick={()=>{addTask(); setShowForm(false);}}>Add</button>
+                    <button className="add-btn" onClick={()=>{addTask(); setShowForm(false);}}>Add</button>
                 </div>
-            </div>
+            </Modal>
             </>
         );      
     }

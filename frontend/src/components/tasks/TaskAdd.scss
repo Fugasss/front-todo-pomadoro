@@ -3,34 +3,16 @@
 div.task-add-form{
     display: flex;
     flex-flow: column nowrap;
-    background-color: base.$background-secondary;
-    padding: 0 1rem;
+    justify-content: start;
+    align-items: center;
+    padding: 0.5rem 0;
     
     p{
-        font-size: 20px;
+        font-size: 22px;
     }
-}
 
-div.modal{
-    position: absolute;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(3px);
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-div.modal > .task-add-form{
-    background-color: base.$background-secondary;
-    border: black 5px solid;
-    display: flex;
-    flex-flow: column nowrap;
-    margin: auto;
-    padding: 10px;
-    max-width: 200px;
-    max-height: fit-content;
+    button.add-btn{
+        width: 50%;
+        margin-top: 0.5rem;
+    }
 }

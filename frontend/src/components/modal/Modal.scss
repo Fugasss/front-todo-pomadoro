@@ -1,0 +1,47 @@
+@use '../../../public/stylesheets/base';
+
+div.modal{
+    position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    .modal-content{
+        background-color: base.$background-secondary;
+        border: black 5px solid;
+        display: flex;
+        flex-flow: column nowrap;
+        margin: auto;
+        width: fit-content;
+        height: fit-content;
+        padding: .25rem .45rem .15rem .45rem;
+
+        .modal-header{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+
+            h2{
+                font-size: 22px;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    
+        .modal-body{
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
