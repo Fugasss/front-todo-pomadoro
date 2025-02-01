@@ -1,4 +1,5 @@
-@use '../../../public/stylesheets/base';
+@use '/public/stylesheets/base';
+@use '/public/stylesheets/mixins' as *;
 
 div.wrapper{
     background-color: base.$background-tertiary;
@@ -14,8 +15,6 @@ div.wrapper{
         padding: 0;
         
         li.task{
-    
-
             padding: 15px 0;
             background-color: base.$background-secondary;
     
@@ -30,10 +29,10 @@ div.wrapper{
             }
         }
     }
-    
+
     .controls-basic{
         display: flex;
-        flex-flow: row nowrap;
+        flex-flow: column nowrap;
         justify-content: space-between;
         align-items: center;
         margin: 5px 0;
@@ -41,9 +40,22 @@ div.wrapper{
         background-color: base.$background-secondary;
 
         button{
-            width: 28%;
+            width: 95%;
             padding: 10px 0;
         }
+
+        @include md{
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            margin: 5px 0;
+            padding: 5px;
+    
+            button{
+                width: 28%;
+                padding: 10px 0;
+            }
+        }
+
     }
 
     .filters{
@@ -55,10 +67,6 @@ div.wrapper{
     }
     
     div.form{
-        
-        *{
-            margin: 0;
-        }
         display: flex;
         flex-flow: column nowrap;
         justify-content: start;

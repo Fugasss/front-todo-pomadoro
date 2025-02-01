@@ -1,8 +1,8 @@
-@use '../../../public/stylesheets/base';
+@use '/public/stylesheets/base';
+@use '/public/stylesheets/mixins' as *;
 
 .wrapper{
     display: block;
-    flex-flow: column nowrap;
     background-color: base.$background-secondary;
     align-items: center;
     justify-content: center;
@@ -17,14 +17,24 @@
 
     .controls{
         display: flex;
-        flex-flow: row nowrap;
+        flex-flow: column nowrap;
         justify-content: space-between;
         align-items: center;
 
         button{
-            margin: 2px 2.5px;
+            margin: 5px 0;
+            width: 95%;
+        }
+
+        
+        @include md{
+            flex-flow: row nowrap;
+            
+            button{
+                margin: 5px 2.5px;
+            }
         }
     }
 
-   
+
 }

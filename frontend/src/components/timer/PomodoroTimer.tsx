@@ -42,10 +42,10 @@ export function PomodoroTimer(){
       }
     };
 
-    return (
+    return (<>
         <TimerWrapper
             initialTime={time}
             onComplete={timerCompleteHandler}
         />
-    );
+    </>);
 }

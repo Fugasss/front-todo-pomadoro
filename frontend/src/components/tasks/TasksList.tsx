@@ -32,15 +32,17 @@ export function TasksList() {
 
     return (
         <div className={styles.wrapper}>
+            <h2>Tasks</h2>
+            <div className={styles.controls}>
+                <TaskAdd/>
+                <button onClick={clearTasksList}>Clear</button>
+            </div>
             <div className={styles.filters}>
                 <button disabled={filter===TasksFilter.ALL} onClick={() => setFilter(TasksFilter.ALL)}>All</button>
                 <button disabled={filter===TasksFilter.COMPLETED} onClick={() => setFilter(TasksFilter.COMPLETED)}>Completed</button>
                 <button disabled={filter===TasksFilter.INCOMPLETE} onClick={() => setFilter(TasksFilter.INCOMPLETE)}>Incomplete</button>
             </div>
-            <div className={styles.controls}>
-                <TaskAdd/>
-                <button onClick={clearTasksList}>Clear</button>
-            </div>
+           
             <ul className={styles.tasks}>
                 {filteredTasks.map(t => (
                 <li className={styles.task} key={t.id}>

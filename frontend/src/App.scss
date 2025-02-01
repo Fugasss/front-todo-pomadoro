@@ -1,14 +1,19 @@
-@use "../public/stylesheets/base";
+@use "/public/stylesheets/base";
+
+.no-mar-pad{
+  padding: 0;
+  margin: 0;
+}
 
 html, body{
+  @extend .no-mar-pad;
   background-color: base.$background-primary;
   color: base.$text-primary;
   box-sizing: border-box;
 }
 
 #root {
-  max-width: 90vw;
-  margin: 0 auto;
-  padding: 2rem;
+  @extend .no-mar-pad;
+  max-width: 100vw;
   text-align: center;
 }
