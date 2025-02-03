@@ -3,6 +3,7 @@ import { TaskActionType } from './TasksReducer';
 import { TasksDispatchContext } from './TasksContext';
 import styles from './Task.module.scss';
 import Modal from '../modal/Modal';
+import TaskStatus from './TaskStatus';
 
 export type TaskProps = {
     id: number,
@@ -93,9 +94,12 @@ export function Task({id, title, description, pomodorosCount, pomodorosCompleted
     return (
         <>
         <div className={styles.wrapper}>
-            <h3>{title}{completed ? '😎': '🤔'}</h3>
-            <p>{description}</p>
-            <p>Status: {completed ? 'Completed': 'In Progress'}</p>
+            <div className={styles.header}>
+                <p>{title}{completed ? '😎': '🤔'}</p>
+                <TaskStatus completed={completed}/>
+            </div>
+            
+            <p className={styles.description}>{description}</p>
             <div className={styles.controls}>
                 <button onClick={handleCompleteButtonClick}>{completed? "Reset" : "Complete"}</button>
                 <button onClick={()=> setUpdate(true)}>Edit</button>

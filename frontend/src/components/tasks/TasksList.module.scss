@@ -1,32 +1,29 @@
 @use '/public/stylesheets/base';
 @use '/public/stylesheets/mixins' as *;
 
+.no-mar-pad{
+    margin: 0;
+    padding: 0;
+}
+
 div.wrapper{
+    @extend .no-mar-pad;
     background-color: base.$background-tertiary;
     padding: 7px;
     border: base.$border;
+    max-width: 25rem;
 
-    *{
-        margin: 5px 0;
+    &>*{
+        margin: 0.5rem 0;
     }
 
     ul.tasks{
+        @extend .no-mar-pad;
         list-style: none;
         padding: 0;
-        
+
         li.task{
-            padding: 15px 0;
-            background-color: base.$background-secondary;
-    
-            h3{
-                margin: 0;
-            }
-    
-            p{
-                max-width: 45ch;
-                text-wrap-style: balance;
-                text-wrap: balance;
-            }
+            margin: 0.25rem 0;
         }
     }
 
@@ -41,18 +38,19 @@ div.wrapper{
 
         button{
             width: 95%;
-            padding: 10px 0;
+            margin: 0.25rem 0;
+            padding: 0.6rem 0;
         }
 
         @include md{
             flex-flow: row nowrap;
             justify-content: space-between;
-            margin: 5px 0;
+            margin: 0.25rem 0;
             padding: 5px;
     
             button{
                 width: 28%;
-                padding: 10px 0;
+                padding: 0.6rem 0;
             }
         }
 
@@ -65,12 +63,10 @@ div.wrapper{
         input{
             width: 91%;
             height: 2rem;
-            margin: 0 auto;
+            margin: 0.25rem auto;
 
             @include md{
                 width: 100%;
-                height: 2rem;
-                margin: 0 auto;
             }
         }
     }

@@ -62,7 +62,7 @@ export function TasksList() {
                 <button disabled={filter===TasksFilter.ALL} onClick={() => setFilter(TasksFilter.ALL)}>All</button>
                 <button disabled={filter===TasksFilter.COMPLETED} onClick={() => setFilter(TasksFilter.COMPLETED)}>Completed</button>
                 <button disabled={filter===TasksFilter.INCOMPLETE} onClick={() => setFilter(TasksFilter.INCOMPLETE)}>Incomplete</button>
-                <input placeholder="Title" onChange={handleTitleInputChange}/>
+                <input placeholder="Search by Title" onChange={handleTitleInputChange}/>
             </div>
            
             <ul className={styles.tasks}>

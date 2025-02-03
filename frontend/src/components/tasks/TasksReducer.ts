@@ -44,7 +44,6 @@ export function tasksReducer(tasks: TaskProps[], action: TaskAction) {
         
         const updatedTasks = tasks.map(t => {
           if (t.id === action?.id) {
-            console.log(action);
             
             const updatedTask = taskService.updateTask({
               id: action.id || t.id,

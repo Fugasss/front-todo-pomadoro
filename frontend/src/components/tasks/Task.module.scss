@@ -1,6 +1,10 @@
+@use '/public/stylesheets/base';
+
 .base{
     display: flex;
     flex-flow: column nowrap;
+    background-color: base.$background-secondary;
+    padding: 0.5rem 0;
 
     input{
         margin: 0 5px;
@@ -21,7 +25,30 @@
 
 div.wrapper{
     @extend .base;
+    text-align: left;
     
+    p{
+        text-wrap-style: auto;
+        overflow-wrap: break-word;
+    }
+
+    .header{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        padding: 0 1rem;
+
+        p{
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+
+    }
+
+    .description{
+        padding: 0 1rem;
+    }
+
     .controls{
         @extend .base-controls;
         margin: 0;
