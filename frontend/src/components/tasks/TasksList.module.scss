@@ -60,6 +60,19 @@ div.wrapper{
 
     .filters{
         @extend .controls-basic;
+        flex-wrap: wrap;
+
+        input{
+            width: 91%;
+            height: 2rem;
+            margin: 0 auto;
+
+            @include md{
+                width: 100%;
+                height: 2rem;
+                margin: 0 auto;
+            }
+        }
     }
     
     div.controls{

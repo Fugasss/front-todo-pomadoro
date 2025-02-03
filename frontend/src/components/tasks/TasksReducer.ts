@@ -15,7 +15,8 @@ export type TaskAction = {
     title?: string,
     description?: string,
     pomodorosCount?: number,
-    pomodorosCompleted?: number
+    pomodorosCompleted?: number,
+    completed?: boolean
 };
 
 
@@ -31,7 +32,8 @@ export function tasksReducer(tasks: TaskProps[], action: TaskAction) {
           title: action.title || 'NO TITLE WAS PROVIDED',
           description: action.description || 'NO DESCRIPTION WAS PROVIDED',
           pomodorosCount: action.pomodorosCount || 1,
-          pomodorosCompleted: 0
+          pomodorosCompleted: 0,
+          completed: false
         });
 
         const newTasks = [...tasks, newTask];
@@ -42,13 +44,15 @@ export function tasksReducer(tasks: TaskProps[], action: TaskAction) {
         
         const updatedTasks = tasks.map(t => {
           if (t.id === action?.id) {
+            console.log(action);
             
             const updatedTask = taskService.updateTask({
               id: action.id || t.id,
               title: action.title || t.title,
               description: action.description || t.description,
               pomodorosCount: action.pomodorosCount || t.pomodorosCount,
-              pomodorosCompleted: action.pomodorosCompleted || t.pomodorosCompleted
+              pomodorosCompleted: action.pomodorosCompleted || t.pomodorosCompleted,
+              completed: (action.completed !== undefined ? action.completed : t.completed)
             });
 
             return updatedTask;

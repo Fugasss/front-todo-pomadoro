@@ -10,14 +10,14 @@ export type TaskProps = {
     description: string,
     pomodorosCount: number,
     pomodorosCompleted: number, 
+    completed: boolean
 };
 
 
-export function Task({id, title, description, pomodorosCount, pomodorosCompleted}: TaskProps) {
+export function Task({id, title, description, pomodorosCount, pomodorosCompleted, completed}: TaskProps) {
     const [update, setUpdate] = useState(false);
     const dispatch = useContext(TasksDispatchContext);
 
-    const completed = pomodorosCompleted === pomodorosCount;
 
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         dispatch({
@@ -45,6 +45,21 @@ export function Task({id, title, description, pomodorosCount, pomodorosCompleted
 
     const handleModalClose = () => {
         setUpdate(false);
+    };
+
+    const handleCompleteButtonClick = () => {
+        dispatch({
+            type: TaskActionType.CHANGED, 
+            id: id, 
+            completed: !completed
+        });
+    };
+
+    const handleDeleteButtonClick = ()=> {
+        dispatch({
+            type: TaskActionType.DELETED, 
+            id: id
+        });
     };
 
     if(update) {
@@ -80,10 +95,11 @@ export function Task({id, title, description, pomodorosCount, pomodorosCompleted
         <div className={styles.wrapper}>
             <h3>{title}{completed ? '😎': '🤔'}</h3>
             <p>{description}</p>
-
+            <p>Status: {completed ? 'Completed': 'In Progress'}</p>
             <div className={styles.controls}>
+                <button onClick={handleCompleteButtonClick}>{completed? "Reset" : "Complete"}</button>
                 <button onClick={()=> setUpdate(true)}>Edit</button>
-                <button onClick={()=> dispatch({type: TaskActionType.DELETED, id: id})}>Delete</button>
+                <button onClick={handleDeleteButtonClick}>Delete</button>
             </div>
             
         </div>
