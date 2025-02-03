@@ -14,8 +14,6 @@ export default class Modal extends React.Component<ModalProps> {
     }
 
     render(): React.ReactNode{
-        console.log(styles);
-        
         return (
             <div className={styles.modal}>
                 <div className={styles.content}>

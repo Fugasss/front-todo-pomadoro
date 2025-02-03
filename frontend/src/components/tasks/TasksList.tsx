@@ -19,9 +19,9 @@ export function TasksList() {
 
     const filteredTasks = tasks.filter(t => { 
         if(filter === TasksFilter.COMPLETED) 
-            return t.pomodorosCompleted + 1 === t.pomodorosCount;
+            return t.pomodorosCompleted === t.pomodorosCount;
         else if(filter === TasksFilter.INCOMPLETE) 
-            return t.pomodorosCompleted + 1 < t.pomodorosCount;
+            return t.pomodorosCompleted < t.pomodorosCount;
         
         return true;
     });
