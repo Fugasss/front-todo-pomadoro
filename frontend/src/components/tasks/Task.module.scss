@@ -12,6 +12,11 @@
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
+
+    button{
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 div.wrapper{
@@ -20,10 +25,11 @@ div.wrapper{
     .controls{
         @extend .base-controls;
         margin: 0;
-        
+
         button{
             width: 25%;
             margin: 0 1rem;
+          
         }
     }
 
