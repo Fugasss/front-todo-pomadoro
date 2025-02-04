@@ -36,12 +36,13 @@ export function TasksList() {
         return false;
     }).filter(t => { 
         if(filter === TasksFilter.COMPLETED) 
-            return t.pomodorosCompleted === t.pomodorosCount;
+            // return t.pomodorosCompleted === t.pomodorosCount;
+            return t.completed;
         else if(filter === TasksFilter.INCOMPLETE) 
-            return t.pomodorosCompleted < t.pomodorosCount;
-        
-        return true;
-    });
+            // return t.pomodorosCompleted < t.pomodorosCount;
+            return !t.completed;
+        return true; 
+    }).sort(t=>t.completed ? 1: -1);
 
     const handleTitleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTitleFilter(e.target.value);
