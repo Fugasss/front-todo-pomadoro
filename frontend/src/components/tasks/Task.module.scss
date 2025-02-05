@@ -3,12 +3,14 @@
 .base{
     display: flex;
     flex-flow: column nowrap;
-    background-color: base.$background-secondary;
+    background-color: var(--background-secondary);
     padding: 0.5rem 0;
 
     input{
         margin: 0 5px;
     }
+
+    
 }
 
 .base-controls{
@@ -41,12 +43,16 @@ div.wrapper{
         p{
             font-weight: 700;
             font-size: 1.2em;
+            padding: 0;
+            margin: 0;
+        
+        
         }
-
     }
 
     .description{
         padding: 0 1rem;
+        margin: 1rem 0;
     }
 
     .controls{

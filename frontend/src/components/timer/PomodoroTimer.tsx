@@ -21,18 +21,18 @@ export function PomodoroTimer(){
   
       if(taskState === "POMODORO"){
   
-        if (tasks[id].pomodorosCompleted + 1 < tasks[id].pomodorosCount){
-            dispatchTask({
-                type: TaskActionType.CHANGED,
-                id: tasks[id].id,
-                pomodorosCompleted: tasks[id].pomodorosCompleted + 1,
-            });
+        // if (tasks[id].pomodorosCompleted + 1 < tasks[id].pomodorosCount){
+        //     dispatchTask({
+        //         type: TaskActionType.CHANGED,
+        //         id: tasks[id].id,
+        //         pomodorosCompleted: tasks[id].pomodorosCompleted + 1,
+        //     });
   
           setTime(SHORT_BREAK_DURATION);
-        } else{
-          setTime(LONG_BREAK_DURATION);
-          setId((prevId) => prevId + 1);
-        }
+        // } else{
+        //   setTime(LONG_BREAK_DURATION);
+        //   setId((prevId) => prevId + 1);
+        // }
   
         setTaskState("BREAK");
   

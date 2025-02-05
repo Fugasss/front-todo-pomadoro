@@ -36,8 +36,6 @@ export default function TimerWrapper({initialTime, onComplete, onPause, onStop}:
 
     return (
         <div className={styles.wrapper}>
-            <h2 style={{padding: 0, margin: 0, marginTop: 10}}>Timer</h2>
-
             <Timer
                 time={time} 
                 setTime={setTime} 

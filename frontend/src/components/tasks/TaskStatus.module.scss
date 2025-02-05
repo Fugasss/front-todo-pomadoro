@@ -23,7 +23,7 @@ $jumpHeight: 6px;
         display: inline-block;
         width: $size;
         height: $size;
-        background-color: black;
+        background-color: var(--text-primary);
         border-radius: 100%;
         margin: $gap;
         animation: jumping 0.6s infinite alternate ease-in-out;

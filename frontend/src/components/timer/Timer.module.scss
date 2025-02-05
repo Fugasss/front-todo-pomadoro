@@ -1,18 +1,18 @@
-@use '/public/stylesheets/base';
 @use '/public/stylesheets/mixins' as *;
 
 .wrapper{
     display: block;
-    background-color: base.$background-secondary;
+    background-color: var(--background-tertiary);
     align-items: center;
     justify-content: center;
-    border: base.$border;
+    border: var(--border);
     margin-bottom: 1rem;
 
     .timer{
         margin: 0 5px;
-        font-size: 2em;
+        font-size: 3em;
         text-align: 'center';
+        font-weight: 700;
     }
 
     .controls{
@@ -20,12 +20,13 @@
         flex-flow: column nowrap;
         justify-content: space-between;
         align-items: center;
+        background-color: var(--background-secondary);
+        margin: 0 .35rem;
 
         button{
             margin: 0.25rem 0;
             width: 95%;
         }
-
         
         @include md{
             flex-flow: row nowrap;
