@@ -12,6 +12,7 @@ type TimerWrapperProps = {
 export default function TimerWrapper({initialTime, onComplete, onPause, onStop}: TimerWrapperProps) {
     const [time, setTime] = useState(initialTime);
     const [state, setState] = useState("STOPPED");
+    console.log(state);
     
     const startTimer = () => {
         setState("RUNNING");

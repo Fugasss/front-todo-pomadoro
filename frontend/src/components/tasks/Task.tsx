@@ -44,7 +44,7 @@ export function Task({id, title, description, pomodorosCount, pomodorosCompleted
         <>
         <div className={styles.wrapper}>
             <div className={styles.header}>
-                <p>{title}</p>
+                <p>{title} - {pomodorosCompleted}/{pomodorosCount}</p>
                 <TaskStatus completed={completed}/>
             </div>
             
@@ -57,7 +57,7 @@ export function Task({id, title, description, pomodorosCount, pomodorosCompleted
             
         </div>
         {(update ?
-            <TaskUpdate id={id} title={title} description={description} onModalClose={handleModalClose}/> : null)}
+            <TaskUpdate id={id} title={title} description={description} pomodorosCount={pomodorosCount} pomodorosCompleted={pomodorosCompleted} completed={completed} onModalClose={handleModalClose}/> : null)}
         </>
     );
 }

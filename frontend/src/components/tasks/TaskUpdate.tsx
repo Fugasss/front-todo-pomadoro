@@ -3,15 +3,13 @@ import Modal from '../modal/Modal';
 import styles from './Task.module.scss';
 import { TasksDispatchContext } from './TasksContext';
 import { TaskActionType } from './TasksReducer';
+import { TaskProps } from './Task';
 
-type TaskUpdateProps = {
-    id: number,
-    title: string,
-    description: string,
+type TaskUpdateProps = TaskProps & {
     onModalClose: Function
 };
 
-export default function TaskUpdate({id, title, description, onModalClose}: TaskUpdateProps) {
+export default function TaskUpdate({id, title, description, pomodorosCount, pomodorosCompleted, onModalClose}: TaskUpdateProps) {
     const dispatch = useContext(TasksDispatchContext);
     
 
@@ -47,9 +45,12 @@ export default function TaskUpdate({id, title, description, onModalClose}: TaskU
                 
                 <label htmlFor='description'>Description</label>
                 <input name='description' type="text" value={description} onChange={handleDescriptionChange} />
-            {/*                 
+                            
+                <label htmlFor='completedCount'>Pomodoros Completed</label>
+                <input name='completedCount' type="number" disabled={true} value={pomodorosCompleted} />
+
                 <label htmlFor='count'>Pomodoros</label>
-                <input name='count' type="number" min={1} value={pomodorosCount} onChange={handlePomodorosCountChange} /> */}
+                <input name='count' type="number" min={1} value={pomodorosCount} onChange={handlePomodorosCountChange} />
 
                 <div className={styles.controls}>
                     <button onClick={()=>onModalClose()}>Back</button>

@@ -8,6 +8,7 @@
   --text-secondary: #333;
   --border: 5px solid black;
   --button-color: #eee;
+  --button-disabled-color: #bbb;
   --button-text-color: var(--text-primary);
 }
 
@@ -20,7 +21,9 @@ body[data-theme = 'dark'] {
   --text-secondary: #eee;
   --border: 5px solid white;
   --button-color: #222;
+  --button-disabled-color: #444;
   --button-text-color: var(--text-primary);
+
 }
 
 .no-mar-pad{
@@ -44,4 +47,8 @@ html, body{
 button{
   background-color: var(--button-color);
   color: var(--button-text-color);
+}
+
+button:disabled{
+  background-color: var(--button-disabled-color);
 }
