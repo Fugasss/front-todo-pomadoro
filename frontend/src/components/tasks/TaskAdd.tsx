@@ -30,9 +30,9 @@ export function TaskAdd() {
         setForm({...form, description: e.target.value});
     };
 
-    // const changeCount = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     setForm({...form, pomodorosCount: +e.target.value});
-    // };
+    const changeCount = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setForm({...form, pomodorosCount: +e.target.value});
+    };
 
     const addButtonClick = ()=>{
         addTask(); 
