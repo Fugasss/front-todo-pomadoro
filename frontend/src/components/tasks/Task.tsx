@@ -2,7 +2,6 @@ import { useContext, useState } from 'react';
 import { TaskActionType } from './TasksReducer';
 import { TasksDispatchContext } from './TasksContext';
 import styles from './Task.module.scss';
-import Modal from '../modal/Modal';
 import TaskStatus from './TaskStatus';
 import TaskUpdate from './TaskUpdate';
 

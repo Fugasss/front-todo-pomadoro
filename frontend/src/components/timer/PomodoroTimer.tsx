@@ -15,8 +15,8 @@ export function PomodoroTimer(){
     const dispatchTask = useContext(TasksDispatchContext);
   
     const timerCompleteHandler = ()=>{
-      console.log(`Timer completed: ${tasks[id]?.pomodorosCompleted}/${ tasks[id]?.pomodorosCount}\nCurrent State: ${taskState}`);
-  
+      // console.log(`${id}Timer completed: ${tasks[id]?.pomodorosCompleted}/${ tasks[id]?.pomodorosCount}\nCurrent State: ${taskState}`);
+      
       if (id >= tasks.length) return;
   
       if(taskState === "POMODORO"){
@@ -36,7 +36,12 @@ export function PomodoroTimer(){
           });
 
           setTime(LONG_BREAK_DURATION);
-          setId((prevId) => prevId + 1);
+          
+          setId((prevId) => {
+            const ind = tasks.findIndex((t)=>(t.completed == false || t.pomodorosCompleted < t.pomodorosCount));
+
+            return (ind == -1 ? prevId : ind);
+          }); 
         }
   
         setTaskState("BREAK");
