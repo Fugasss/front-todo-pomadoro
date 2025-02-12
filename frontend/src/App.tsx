@@ -10,13 +10,18 @@ import Overlay, { Position } from './components/overlay/Overlay';
 type Theme = 'light'|'dark';
 
 export default function App() {
-  const [theme, setTheme] = useState<Theme>('dark');
+
+  const [theme, setTheme] = useState<Theme>(localStorage.getItem('theme') as Theme || 'dark');
 
   useEffect(()=>{
     document.body.setAttribute('data-theme', theme);
   }, [theme]);
 
-  const toggleTheme = ()=>setTheme( theme === 'light' ? 'dark' : 'light');
+  const toggleTheme = ()=>{
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
 
   const getThemeIconUrl = () => {
     return theme === 'dark' ? '/images/icon-moon.svg' : '/images/icon-sun.svg';
